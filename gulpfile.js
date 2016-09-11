@@ -16,7 +16,7 @@ const cssRoot = 'dist/css';
 const js = 'src/renderer/js/**/*.js';
 const jsRoot = 'dist/js/';
 
-const jsBrowser = 'src/browser/js/**/*.js';
+const jsBrowser = ['*.js', 'src/browser/js/**/*.js'];
 
 const views = 'src/renderer/views/**/*.jade';
 const viewsRoot = 'dist/views';
@@ -44,6 +44,7 @@ gulp.task('inject-dependencies', function() {
       path.extname = '.html';
     }))
     .pipe(gulp.dest(viewsRoot))
+    .pipe(plugins.notify('<%= file.relative %> has been live updated.'))
   //restart()
   return task
 });
@@ -51,7 +52,6 @@ gulp.task('inject-dependencies', function() {
 gulp.task('build-sass', () => {
   var task = gulp.src(sassRoot+'/*.scss')
     .pipe(plugins.plumber())
-    //.pipe(plugins.notify('Compile Sass File: <%= file.relative %>...'))
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.autoprefixer('last 10 versions'))
     .pipe(plugins.sass({
@@ -59,6 +59,7 @@ gulp.task('build-sass', () => {
     })).on('error', handleError)
     .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(cssRoot))
+    .pipe(plugins.notify('<%= file.relative %> has been live updated.'))
   //restart()
   return task
 });
@@ -71,6 +72,7 @@ gulp.task("build-js", function() {
         //.pipe(plugins.uglify())
       .pipe(plugins.sourcemaps.write())
       .pipe(gulp.dest(jsRoot))
+      .pipe(plugins.notify('<%= file.relative %> has been live updated.'))
     //restart()
     return task
 });
@@ -97,7 +99,7 @@ gulp.task('watch-sass', () => {
 
 gulp.task('watch-js', () => {
   //plugins.notify('JavaScript Stream is Active...');
-  gulp.watch(js, ['build-js', electron.reload]);
+  gulp.watch(js, ['build-js', electron.reload, 'watch-notify']);
 });
 
 gulp.task('watch-jade', () => {
@@ -109,6 +111,10 @@ gulp.task('watch-js-browser', () => {
   //plugins.notify('Jade Stream is Active...');
   gulp.watch(jsBrowser, [electron.restart]);
 });
+
+gulp.task('watch-notify', () => {
+  plugins.notify('The app has been updated.');
+})
 
 var exec = require('child_process').exec;
 gulp.task('start', () => {
