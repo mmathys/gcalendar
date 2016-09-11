@@ -54,9 +54,11 @@ gulp.task('build-sass', () => {
 
 gulp.task("build-js", function() {
     gulp.src(js)
-    //.pipe(plugins.concat("app.js"))
-    //.pipe(plugins.ignore.exclude([ "**/*.map" ]))
-    //.pipe(plugins.uglify())
+    .pipe(plugins.sourcemaps.init())
+      .pipe(plugins.concat("app.js"))
+      //.pipe(plugins.ignore.exclude([ "**/*.map" ]))
+      //.pipe(plugins.uglify())
+    .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(jsRoot));
 });
 
