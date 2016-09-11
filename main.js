@@ -23,7 +23,7 @@ var mainWindow = null;
 var options = {
 	"debug": true,
 	"version": "1.0.1",
-	"views_dir": "views",
+	"views_dir": "dist/views",
 	"root_view": "index.html"
 };
 

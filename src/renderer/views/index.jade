@@ -1,0 +1,27 @@
+doctype html
+html(ng-app='app')
+  head
+    title Electron Boilerplate: Hello World! 111123
+    // bower:css
+    // endbower
+    // CUSTOM CSS
+    link(rel='stylesheet', href='../css/style.css')
+  body(ng-controller='HomeController')
+    // build:remove
+    // Connect to server process
+    script.
+      require('electron-connect').client.create()
+    // end:build
+    h1 Electron Boilerplate is alive! 12343123123
+    p(ng-bind='test')
+    md-checkbox(ng-click="showError('asdf')", ng-model='cb1', aria-label='Checkbox 1')
+      | Checkbox 1: {{ cb1 }}
+    // REQUIRED
+    script(src='../../jspm_packages/system.js')
+    // script(src='../../config.js')
+    // bower:js
+    // endbower
+    // not working for some reason, inject manually
+    script(src='../vendor/electangular/electangular.js')
+    // user's stuff
+    script(src='../js/app.js')

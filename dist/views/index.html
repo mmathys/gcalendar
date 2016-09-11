@@ -1,0 +1,10 @@
+<!DOCTYPE html><html ng-app="app"><head><title>Electron Boilerplate: Hello World! 111123</title><!-- bower:css-->
+<link rel="stylesheet" href="../../dist/vendor/angular-material/angular-material.css" />
+<!-- endbower--><!-- CUSTOM CSS--><link rel="stylesheet" href="../css/style.css"></head><body ng-controller="HomeController"><!-- build:remove--><!-- Connect to server process--><script>require('electron-connect').client.create()</script><!-- end:build--><h1>Electron Boilerplate is alive! 12343123123</h1><p ng-bind="test"></p><md-checkbox ng-click="showError('asdf')" ng-model="cb1" aria-label="Checkbox 1">Checkbox 1: {{ cb1 }}</md-checkbox><!-- REQUIRED--><script src="../../jspm_packages/system.js"></script><!-- script(src='../../config.js')--><!-- bower:js-->
+<script src='../../dist/vendor/angular/angular.js'></script>
+<script src='../../dist/vendor/angular-mocks/angular-mocks.js'></script>
+<script src='../../dist/vendor/angular-animate/angular-animate.js'></script>
+<script src='../../dist/vendor/angular-aria/angular-aria.js'></script>
+<script src='../../dist/vendor/angular-messages/angular-messages.js'></script>
+<script src='../../dist/vendor/angular-material/angular-material.js'></script>
+<!-- endbower--><!-- not working for some reason, inject manually--><script src="../vendor/electangular/electangular.js"></script><!-- user's stuff--><script src="../js/app.js"></script></body></html>
