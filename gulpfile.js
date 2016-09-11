@@ -44,7 +44,7 @@ gulp.task('inject-dependencies', function() {
       path.extname = '.html';
     }))
     .pipe(gulp.dest(viewsRoot))
-    .pipe(plugins.notify('<%= file.relative %> has been live updated.'))
+    .pipe(plugins.notify('<%= file.relative %> has been updated.'))
   //restart()
   return task
 });
@@ -59,7 +59,7 @@ gulp.task('build-sass', () => {
     })).on('error', handleError)
     .pipe(plugins.sourcemaps.write())
     .pipe(gulp.dest(cssRoot))
-    .pipe(plugins.notify('<%= file.relative %> has been live updated.'))
+    .pipe(plugins.notify('<%= file.relative %> has been updated.'))
   //restart()
   return task
 });
@@ -72,7 +72,7 @@ gulp.task("build-js", function() {
         //.pipe(plugins.uglify())
       .pipe(plugins.sourcemaps.write())
       .pipe(gulp.dest(jsRoot))
-      .pipe(plugins.notify('<%= file.relative %> has been live updated.'))
+      .pipe(plugins.notify('<%= file.relative %> has been updated.'))
     //restart()
     return task
 });
