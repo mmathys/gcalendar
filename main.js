@@ -22,7 +22,7 @@ crashReporter.start({
 var mainWindow = null;
 var options = {
 	"debug": true,
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"views_dir": "views",
 	"root_view": "index.html"
 };

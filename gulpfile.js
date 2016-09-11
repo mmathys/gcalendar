@@ -75,6 +75,27 @@ gulp.task('watch-js', () => {
   gulp.watch(js, ['build-js']);
 });
 
+var options = {
+    continueOnError: false, // default = false, true means don't emit error event
+    pipeStdout: false, // default = false, true means stdout is written to file.contents
+    customTemplatingThing: "test" // content passed to gutil.template()
+  };
+
+var exec = require('child_process').exec;
+gulp.task('start', () => {
+  exec('electron .', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+
+gulp.task('restart', () => {
+  exec('killall electron; electron .', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+
 // ############################################################################################
 // ############################################################################################
 
@@ -84,3 +105,4 @@ gulp.task('default', ['build-sass', 'inject-dependencies', 'build-js'], () => {
 
 gulp.task('clean', ['clean:styles']);
 gulp.task('watch', ['watch-sass', 'watch-js']);
+gulp.task('develop', ['default', 'watch', 'start'])
