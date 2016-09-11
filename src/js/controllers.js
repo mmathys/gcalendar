@@ -1,12 +1,12 @@
 //import db from 'nedb';
 //ws
-(function() {
-  'use strict';
-  angular.module('app', ['ngMaterial', 'electangular'])
+'use strict';
+angular.module('app', ['ngMaterial', 'electangular'])
 
-  .controller('HomeController', function($scope, electron) {
+.controller('HomeController', ['$scope','electron', function($scope, electron) {
+  console.log("home controller")
+  $scope.showError = function(err) {
+    electron.dialog.showErrorBox('Error Title', err);
+  }
 
-
-
-  });
-})();
+}]);
