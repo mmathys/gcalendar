@@ -5,3 +5,5 @@ npm-debug.log
 node_modules/
 jspm_packages/
 dist/vendor/
+dist/css
+dist/js

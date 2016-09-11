@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="Home">
+<html ng-app="app">
   <head>
     <title>Electron Boilerplate: Hello World!</title>
     <!-- bower:css -->
-    <link rel="stylesheet" href="../dist/vendor/skeleton/css/skeleton.css" />
+    <link rel="stylesheet" href="../dist/vendor/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../dist/css/style.css">
@@ -11,14 +11,26 @@
   <body ng-controller="HomeController">
 
     <h1>Electron Boilerplate is alive!</h1>
+    <p ng-bind="test">
 
+    </p>
+    <md-checkbox ng-model="cb1" aria-label="Checkbox 1">
+      Checkbox 1: {{ cb1 }}
+    </md-checkbox>
     <!-- REQUIRED -->
     <script src="../jspm_packages/system.js"></script>
     <script src="../config.js"></script>
     <!-- bower:js -->
     <script src="../dist/vendor/angular/angular.js"></script>
     <script src="../dist/vendor/angular-mocks/angular-mocks.js"></script>
+    <script src="../dist/vendor/angular-animate/angular-animate.js"></script>
+    <script src="../dist/vendor/angular-aria/angular-aria.js"></script>
+    <script src="../dist/vendor/angular-messages/angular-messages.js"></script>
+    <script src="../dist/vendor/angular-material/angular-material.js"></script>
     <!-- endbower -->
+
+    <!-- user's stuff -->
+    <script src="../dist/js/controllers.js"></script>
     <script src="../dist/app/home/home.js"></script>
     <script src="../dist/js/sample.js"></script>
   </body>

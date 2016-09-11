@@ -11,6 +11,9 @@ const plugins = gulpLoadPlugins();
 const sassRoot = 'src/scss';
 const cssRoot = 'dist/css';
 
+const js = 'src/js/**/*.js';
+const jsRoot = 'dist/js/';
+
 const views = 'views/**/*.html';
 const viewsRoot = 'views/';
 
@@ -49,6 +52,14 @@ gulp.task('build-sass', () => {
     .pipe(gulp.dest(cssRoot));
 });
 
+gulp.task("build-js", function() {
+    gulp.src(js)
+    //.pipe(plugins.concat("app.js"))
+    //.pipe(plugins.ignore.exclude([ "**/*.map" ]))
+    //.pipe(plugins.uglify())
+    .pipe(gulp.dest(jsRoot));
+});
+
 // ############################################################################################
 // ############################################################################################
 
@@ -57,12 +68,17 @@ gulp.task('watch-sass', () => {
   gulp.watch(sassRoot+'/**/*.scss', ['build-sass']);
 });
 
+gulp.task('watch-js', () => {
+  plugins.notify('JavaScript Stream is Active...');
+  gulp.watch(js, ['build-js']);
+});
+
 // ############################################################################################
 // ############################################################################################
 
-gulp.task('default', ['build-sass', 'inject-dependencies'], () => {
-  gutil.log('Transposing Sass...');
+gulp.task('default', ['build-sass', 'inject-dependencies', 'build-js'], () => {
+  gutil.log('Transposing Sass and JavaScript...');
 });
 
 gulp.task('clean', ['clean:styles']);
-gulp.task('watch', ['watch-sass']);
+gulp.task('watch', ['watch-sass', 'watch-js']);

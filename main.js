@@ -6,7 +6,7 @@ const {
 	BrowserWindow,
 	crashReporter
 } = require('electron')
-var path = require('path');
+var path = require('path')
 
 // ####################################################
 // ####################################################
