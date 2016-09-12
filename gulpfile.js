@@ -67,6 +67,10 @@ gulp.task('build-sass', () => {
 gulp.task("build-js", function() {
     var task = gulp.src(js)
       .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.browserify({
+          insertGlobals : true,
+          debug : !gulp.env.production
+        }))
         .pipe(plugins.concat("app.js"))
         //.pipe(plugins.ignore.exclude([ "**/*.map" ]))
         //.pipe(plugins.uglify())

@@ -13,15 +13,17 @@ html(ng-app='app')
       require('electron-connect').client.create()
     // end:build
     h1 Electron Boilerplate is alive!
-    p(ng-bind='test')
+    p
+      | There are {{count}} items in the database.    
     md-checkbox(ng-click="showError('asdf')", ng-model='cb1', aria-label='Checkbox 1')
       | Checkbox 1: {{ cb1 }}
     // REQUIRED
-    script(src='../../jspm_packages/system.js')
+    // script(src='../../jspm_packages/system.js')
     // script(src='../../config.js')
     // bower:js
     // endbower
     // not working for some reason, inject manually
     script(src='../vendor/electangular/electangular.js')
+    script(src='../vendor/nedb/browser-version/out/nedb.js')
     // user's stuff
     script(src='../js/app.js')

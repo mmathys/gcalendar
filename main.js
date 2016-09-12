@@ -4,9 +4,10 @@ var _ = require('lodash');
 const {
 	app,
 	BrowserWindow,
-	crashReporter
+	crashReporter,
+	ipcMain
 } = require('electron')
-var path = require('path')
+const path = require('path')
 
 // ####################################################
 // ####################################################
@@ -44,6 +45,20 @@ app.on('ready', function() {
   mainWindow.loadURL(path.join('file://', __dirname, options.views_dir, options.root_view));
   if(options.debug) { mainWindow.openDevTools(); }
   mainWindow.on('closed', function() { mainWindow = null; });
+
+	ipcMain.on('electron-msg', (event, msg) => {
+    //handle incoming message here
+    console.log(msg);
+
+    //message can be an Object
+    if (msg.username == 'dude') {
+      console.log(msg.access_level);
+    }
+  });
+	setInterval(function() {
+		mainWindow.webContents.send('electron-msg', "hi there from host");
+	}, 5000);
+
 });
 
 // ############################################################################################
